@@ -1,0 +1,184 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1,
+h2,
+h3,
+h4,
+button,
+input,
+label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
+/* Header.css */
+:root {
+  --bg-dark: rgba(13, 17, 23, 0.9);
+  --text-main: #f0f6fc;
+  --text-muted: #8b949e;
+  --accent-gradient: linear-gradient(135deg, #58a6ff, #bc85ff);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Base Desktop Layout */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 8%;
+  background: var(--bg-dark);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.navbar-logo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: -0.5px;
+  cursor: pointer;
+  white-space: nowrap; /* Prevents logo from wrapping */
+}
+
+.Nav-Bar {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.Nav-Bar a {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 500;
+  padding: 0.6rem 1.3rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.Nav-Bar a:hover {
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.Nav-Bar a.active {
+  color: #fff;
+  background: var(--accent-gradient);
+  box-shadow: 0 4px 15px rgba(188, 133, 255, 0.3);
+}
+
+/* --- RESPONSIVE MOBILE BREAKPOINT --- */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Stacks logo on top, menu below */
+    gap: 1.2rem;
+    padding: 1rem 5%;
+    align-items: center;
+  }
+
+  .left-section {
+    width: 100%;
+  }
+
+  /* Turns menu into a smooth, horizontal scrolling strip on phones */
+  .Nav-Bar {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 5px; /* prevents shadow clipping */
+
+    /* Hide scrollbar for Chrome/Safari/Opera */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .Nav-Bar::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
+  .Nav-Bar a {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+}
