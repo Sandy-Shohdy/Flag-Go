@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router";
 import { HomePage } from "./Pages/HomePage";
-import "./App.css";
 import InitialDes from "./InitialDestination.js";
 import { useState } from "react";
 import Header from "./components/Header.jsx";

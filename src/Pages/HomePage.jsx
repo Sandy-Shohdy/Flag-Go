@@ -1,6 +1,7 @@
 import DestinationList from "../components/DestinationList";
 import React from "react";
 import "./HomePage.css";
+import "../global.css";
 
 export function HomePage({ destinations, onEdit, onDelete, onToggleVisited }) {
   const [filter, setFilter] = React.useState("all");

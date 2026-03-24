@@ -1,5 +1,7 @@
 import DestinationCard from "../components/DestinationCard";
 import "./VisitedPage.css";
+import "../global.css";
+
 export default function VisitedPage({
   destinations,
   onEdit,
