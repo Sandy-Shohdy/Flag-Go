@@ -1,9 +1,40 @@
 import DestinationList from "../components/DestinationList";
+import DestinationForm from "../components/DestinationForm";
 import React from "react";
 import "./HomePage.css";
 import "../global.css";
 
-export function HomePage({ destinations, onEdit, onDelete, onToggleVisited }) {
+export function HomePage({
+  destinations,
+  onAdd,
+  onEdit,
+  onDelete,
+  onToggleVisited,
+}) {
+  const [showForm, setShowForm] = React.useState(false);
+  const [editingItem, setEditingItem] = React.useState(null);
+
+  function handleSubmit(des) {
+    if (editingItem) {
+      onEdit(des);
+    } else {
+      onAdd(des);
+    }
+
+    setShowForm(false);
+    setEditingItem(null);
+  }
+
+  function handleEdit(des) {
+    setEditingItem(des);
+    setShowForm(true);
+  }
+
+  function handleCancel() {
+    setShowForm(false);
+    setEditingItem(null);
+  }
+
   const [filter, setFilter] = React.useState("all");
   const filtered = destinations.filter((des) => {
     if (filter === "visited") return des.visited === true;
@@ -45,10 +76,17 @@ export function HomePage({ destinations, onEdit, onDelete, onToggleVisited }) {
 
       <DestinationList
         destinations={filtered}
-        onEdit={onEdit}
+        onEdit={handleEdit}
         onDelete={onDelete}
         onToggleVisited={onToggleVisited}
       />
+      {setShowForm && (
+        <DestinationForm
+          onSubmit={handleSubmit}
+          onCancel={handleCancel}
+          editingItem={editingItem}
+        />
+      )}
     </main>
   );
 }

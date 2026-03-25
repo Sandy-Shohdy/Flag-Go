@@ -8,7 +8,9 @@ export default function DestinationCard({
   onToggleVisited,
 }) {
   const { id, name, country, notes, visited } = destination;
-
+  function handleRemove() {
+    onDelete(id);
+  }
   return (
     <div className="card">
       <div className="card-header">
@@ -27,7 +29,7 @@ export default function DestinationCard({
           {visited ? "Mark Unvisited" : "Mark Visited"}
         </button>
         <button onClick={() => onEdit(destination)}>Edit</button>
-        <button onClick={() => onDelete(id)} className="btn-delete">
+        <button onClick={handleRemove} className="btn-delete">
           Delete
         </button>
         <Link to={`/destination/${id}`} className="btn-details">
