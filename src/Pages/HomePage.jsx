@@ -16,11 +16,7 @@ export function HomePage({
   const [filter, setFilter] = React.useState("all");
 
   function handleSubmit(des) {
-    if (editingItem) {
-      onEdit(des);
-    } else {
-      onAdd(des);
-    }
+    editingItem ? onEdit(des) : onAdd(des);
 
     setShowForm(false);
     setEditingItem(null);
@@ -44,13 +40,11 @@ export function HomePage({
 
   return (
     <div>
-      <div className="page">
         <div className="page-top">
           <h2>My Destinations</h2>
           <button className="btn-primary" onClick={() => setShowForm(true)}>
             + Add
           </button>
-        </div>
       </div>
 
       <div className="filters">

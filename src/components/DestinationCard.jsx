@@ -13,7 +13,7 @@ export default function DestinationCard({
   return (
     <div className="card">
       <div className="card-header">
-        <span className="card-flag">{country?.flag || "🌍"}</span>
+        <span className="card-flag"> 🌍 </span>
         <div>
           <h3>{name}</h3>
           <p className="card-country">{country?.name}</p>

@@ -1,6 +1,5 @@
 import DestinationCard from "../components/DestinationCard";
 import "./VisitedPage.css";
-import "../global.css";
 
 export default function VisitedPage({
   destinations,
@@ -14,8 +13,9 @@ export default function VisitedPage({
 
   return (
     <div className="visited-page">
-      <h2>Visited Destinations</h2>
-
+      <div className="page-top">
+        <h2>Visited Destinations</h2>
+      </div>
       {visitedDestinations.length === 0 ? (
         <p className="empty">No visited places yet!</p>
       ) : (

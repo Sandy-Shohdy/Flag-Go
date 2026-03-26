@@ -44,13 +44,13 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
 
     try {
       const res = await fetch(
-        `https://restcountries.com/v3.1/name/${value}?fields=name,flags,capital,region`,
+        `https://restcountries.com/v3.1/name/${value}?fields=name,capital,region`,
       );
       const data = await res.json();
       setSuggestions(
         data.slice(0, 5).map((c) => ({
           name: c.name.common,
-          flag: c.flags?.emoji,
+
           capital: c.capital?.[0] || "",
           region: c.region || "",
         })),
@@ -68,10 +68,18 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
 
   useEffect(() => {
     if (editingItem) {
+      // ✅ populate fields when editing
       setName(editingItem.name);
       setNotes(editingItem.notes || "");
       setCountryInput(editingItem.country?.name || "");
       setSelectedCountry(editingItem.country || null);
+    } else {
+      // ✅ reset fields when adding new
+      setName("");
+      setNotes("");
+      setCountryInput("");
+      setSelectedCountry(null);
+      setErrors({});
     }
   }, [editingItem]);
 
@@ -103,7 +111,7 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
               <ul>
                 {suggestions.map((c) => (
                   <li key={c.name} onClick={() => pickCountry(c)}>
-                    {c.flag} {c.name}
+                    {c.name}
                   </li>
                 ))}
               </ul>
