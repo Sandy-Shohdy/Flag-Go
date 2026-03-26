@@ -19,7 +19,7 @@
   font-weight: 800;
   color: var(--text-main);
   letter-spacing: -0.5px;
-  cursor: pointer;
+  cursor: default;
   white-space: nowrap;
 }
 

@@ -65,6 +65,6 @@ export default [
       region: "Africa",
     },
     notes: "Pyramids and the Nile River",
-    visited: false,
+    visited: true,
   },
 ];

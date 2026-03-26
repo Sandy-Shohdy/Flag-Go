@@ -32,9 +32,6 @@ export default function DestinationCard({
         <button onClick={handleRemove} className="btn-delete">
           Delete
         </button>
-        <Link to={`/destination/${id}`} className="btn-details">
-          Details
-        </Link>
       </div>
     </div>
   );

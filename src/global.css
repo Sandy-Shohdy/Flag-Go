@@ -100,7 +100,7 @@ textarea:not([rows]) {
 main {
   min-height: 100vh;
   background-color: #0d1117;
-  padding-top: 2rem;
+  padding-top: 1rem;
 }
 
 .page {
