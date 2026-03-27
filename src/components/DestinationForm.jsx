@@ -8,6 +8,8 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
   const [countryInput, setCountryInput] = React.useState("");
   const [suggestions, setSuggestions] = React.useState([]);
   const [selectedCountry, setSelectedCountry] = React.useState(null);
+  const [dateFrom, setDateFrom] = React.useState();
+  const [dateTo, setDateTo] = React.useState();
 
   function validate() {
     const errs = {};
@@ -30,6 +32,8 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
       notes: notes.trim(),
       country: selectedCountry || null,
       visited: editingItem ? editingItem.visited : false,
+      dateFrom,
+      dateTo,
     };
     onSubmit(newDestination);
   }
@@ -68,24 +72,36 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
 
   useEffect(() => {
     if (editingItem) {
-      // ✅ populate fields when editing
       setName(editingItem.name);
       setNotes(editingItem.notes || "");
       setCountryInput(editingItem.country?.name || "");
       setSelectedCountry(editingItem.country || null);
+      setDateFrom(editingItem.dateFrom);
+      setDateTo(editingItem.dateTo);
     } else {
-      // ✅ reset fields when adding new
       setName("");
       setNotes("");
       setCountryInput("");
       setSelectedCountry(null);
+      setDateFrom("");
+      setDateTo("");
       setErrors({});
     }
   }, [editingItem]);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") onCancel();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onCancel]);
+
+  
   return (
-    <div className="modal-overlay">
-      <div className="modal">
+    <div className="modal-overlay" onClick={onCancel}>
+      {" "}
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
         <h2>{editingItem ? "Edit Destination" : "Add Destination"}</h2>
         <form onSubmit={handleSubmit}>
           <div>
@@ -126,11 +142,34 @@ export default function DestinationForm({ onSubmit, onCancel, editingItem }) {
               placeholder="Any notes..."
             />
           </div>
-          <button type="submit">{editingItem ? "Save" : "Add"}</button>
 
-          <button type="button" onClick={onCancel}>
-            Cancel
-          </button>
+          <div className="travel-date">
+            <div className="date-input-group">
+              <label>From</label>
+              <input
+                type="date"
+                value={dateFrom}
+                onChange={(e) => setDateFrom(e.target.value)}
+              />
+            </div>
+            <div className="date-input-group">
+              <label>To</label>
+              <input
+                type="date"
+                value={dateTo}
+                onChange={(e) => setDateTo(e.target.value)}
+              />
+            </div>
+          </div>
+
+          <div className="form-actions">
+            <button type="button" className="btn-cancel" onClick={onCancel}>
+              Cancel
+            </button>
+            <button type="submit" className="btn-submit">
+              {editingItem ? "Save" : "Add"}
+            </button>
+          </div>  
         </form>
       </div>
     </div>
