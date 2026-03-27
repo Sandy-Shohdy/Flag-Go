@@ -9,10 +9,15 @@ export default function App() {
   const [destinations, setDestinations] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
 
-  // Fetch initial destinations from restcountries API on mount
   React.useEffect(() => {
     const fetchInitialDestinations = async () => {
       try {
+        const saved = localStorage.getItem("destinations");
+        if (saved) {
+          setDestinations(JSON.parse(saved));
+          setLoading(false);
+          return; // skip the API fetch
+        }
         const starterCountries = [
           "Argentina",
           "Iceland",
@@ -56,6 +61,12 @@ export default function App() {
 
     fetchInitialDestinations();
   }, []);
+
+  React.useEffect(() => {
+    if (!loading) {
+      localStorage.setItem("destinations", JSON.stringify(destinations));
+    }
+  }, [destinations, loading]);
 
   function handleAdd(newDestination) {
     setDestinations((prev) => [newDestination, ...prev]);
