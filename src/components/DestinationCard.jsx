@@ -32,13 +32,13 @@ export default function DestinationCard({
           Delete
         </button>
       </div>
-      <div className="travel-date">
+      <div className="travelDate">
         {destination.dateFrom && destination.dateTo && (
           <p>
             🗓️ {destination.dateFrom} → {destination.dateTo}
           </p>
         )}
       </div>
-    </div>
+    </div>  
   );
 }

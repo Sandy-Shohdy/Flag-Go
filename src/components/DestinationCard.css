@@ -118,3 +118,31 @@
     margin-top: 10px;
   }
 }
+
+/* DestinationCard.css */
+
+.travelDate {
+  padding-top: 0.8rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.travelDate p {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #8b949e;
+  gap: 0.5rem;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 480px) {
+  .travelDate p {
+    font-size: 0.65rem;
+    justify-content: center;
+    width: 100%;
+  }
+}
