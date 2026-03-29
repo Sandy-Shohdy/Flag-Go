@@ -62,11 +62,7 @@ export default function App() {
     fetchInitialDestinations();
   }, []);
 
-  React.useEffect(() => {
-    if (!loading) {
-      localStorage.setItem("destinations", JSON.stringify(destinations));
-    }
-  }, [destinations, loading]);
+  
 
   function handleAdd(newDestination) {
     setDestinations((prev) => [newDestination, ...prev]);

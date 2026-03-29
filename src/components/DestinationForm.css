@@ -1,6 +1,4 @@
-/* DestinationForm.css */
 
-/* 1. The Backdrop */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -13,13 +11,12 @@
   padding: 20px;
 }
 
-/* 2. The Form Card */
 .modal {
-  background: #111827; /* Deep midnight blue */
+  background: #111827; 
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   width: 100%;
-  max-width: 340px; /* Narrow card width */
+  max-width: 340px; 
   padding: 1.5rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
   animation: cardEntry 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -33,14 +30,12 @@
   letter-spacing: -0.5px;
 }
 
-/* 3. Form Layout */
 form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-/* Helper to keep dropdowns from breaking the layout */
 form > div {
   position: relative;
   display: flex;
@@ -80,7 +75,6 @@ textarea {
   resize: none;
 }
 
-/* 4. The Country Suggestions (Floating List) */
 .modal ul {
   position: absolute;
   top: 100%;
@@ -112,7 +106,6 @@ textarea {
   color: #60a5fa;
 }
 
-/* 5. Date Grid */
 .travel-date {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -130,7 +123,6 @@ input[type="date"] {
   padding: 0.5rem;
 }
 
-/* 6. Action Buttons */
 .form-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -167,7 +159,6 @@ input[type="date"] {
   opacity: 0.9;
 }
 
-/* 7. Responsive Fixes */
 @media (max-width: 400px) {
   .modal {
     max-width: 90%;
@@ -175,7 +166,6 @@ input[type="date"] {
   }
 }
 
-/* Animations */
 @keyframes cardEntry {
   from {
     opacity: 0;
