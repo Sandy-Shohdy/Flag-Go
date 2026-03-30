@@ -4,20 +4,16 @@ import React from "react";
 import Header from "./components/Header.jsx";
 import VisitedPage from "./Pages/VisitedPage.jsx";
 import AboutPage from "./Pages/AboutPage.jsx";
+import "./global.css";
 
 export default function App() {
   const [destinations, setDestinations] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const [alert, setAlert] = React.useState(null);
 
   React.useEffect(() => {
     const fetchInitialDestinations = async () => {
       try {
-        const saved = localStorage.getItem("destinations");
-        if (saved) {
-          setDestinations(JSON.parse(saved));
-          setLoading(false);
-          return; // skip the API fetch
-        }
         const starterCountries = [
           "Argentina",
           "Iceland",
@@ -62,20 +58,28 @@ export default function App() {
     fetchInitialDestinations();
   }, []);
 
-  
+  function showAlert(message) {
+    setAlert(message);
+    setTimeout(() => {
+      setAlert(null);
+    }, 1000);
+  }
 
   function handleAdd(newDestination) {
     setDestinations((prev) => [newDestination, ...prev]);
+    showAlert("Destination added!");
   }
 
   function handleEdit(updated) {
     setDestinations((prev) =>
       prev.map((des) => (des.id === updated.id ? updated : des)),
     );
+    showAlert("Destination updated!");
   }
 
   function handleDelete(id) {
     setDestinations((prev) => prev.filter((des) => des.id !== id));
+    showAlert("Destination deleted!");
   }
 
   function handleToggleVisited(id) {
@@ -140,6 +144,7 @@ export default function App() {
           />
         </Routes>
       </main>
+      {alert && <div className="alert">{alert}</div>}
     </>
   );
 }

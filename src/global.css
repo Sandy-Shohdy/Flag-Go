@@ -172,3 +172,20 @@ main {
     padding: 0 4%;
   }
 }
+
+.alert {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1f2938;
+  color: #f0f6fc;
+  padding: 0.8rem 1.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  font-size: 0.95rem;
+  z-index: 9999;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  animation: slideUp 0.3s ease;
+}

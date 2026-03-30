@@ -5,7 +5,9 @@ import "../global.css";
 export default function Header() {
   return (
     <div className="header">
-      <span className="navbar-logo">✈️ Next-Stop</span>
+      <NavLink to="/" className="navbar-logo">
+        ✈️ Next-Stop
+      </NavLink>
 
       <div className="left-section">
         <nav className="Nav-Bar">

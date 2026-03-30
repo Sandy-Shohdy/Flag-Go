@@ -17,8 +17,9 @@
   font-weight: 800;
   color: var(--text-main);
   letter-spacing: 1.5px;
-  cursor: default;
+  cursor: pointer;
   white-space: nowrap;
+  text-decoration: none;
 }
 
 .Nav-Bar {
