@@ -29,7 +29,7 @@ export default function DestinationCard({
     fetchPhoto();
   }, [name]);
 
-  function handleRemove() {
+  function handleDelete() {
     onDelete(id);
   }
   return (
@@ -51,7 +51,7 @@ export default function DestinationCard({
           {visited ? "Mark Unvisited" : "Mark Visited"}
         </button>
         <button onClick={() => onEdit(destination)}>Edit</button>
-        <button onClick={handleRemove} className="btn-delete">
+        <button onClick={handleDelete} className="btn-delete">
           Delete
         </button>
       </div>
